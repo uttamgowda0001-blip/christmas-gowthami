@@ -14,39 +14,26 @@ body {
   overflow-x: hidden;
 }
 
-/* Snow */
-.snow {
-  position: fixed;
-  top: -10px;
-  color: #fff;
-  font-size: 18px;
-  animation: fall linear infinite;
-  opacity: 0.8;
-}
-@keyframes fall {
-  to { transform: translateY(110vh); }
-}
-
 /* Sections */
 .section {
   display: none;
   padding: 40px 20px;
+  min-height: 100vh;
 }
-.active {
+
+.section.active {
   display: block;
 }
 
-/* Card */
 .card {
   background: white;
   padding: 25px;
-  border-radius: 18px;
-  max-width: 360px;
+  border-radius: 15px;
+  max-width: 380px;
   margin: auto;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* Buttons */
 button {
   padding: 14px 26px;
   font-size: 16px;
@@ -68,11 +55,30 @@ button {
   border-radius: 50%;
   padding: 12px;
   font-size: 14px;
+  z-index: 10;
 }
+
+/* Signature */
 .signature {
-  margin-top: 18px;
+  margin-top: 20px;
   font-style: italic;
   color: #ff4d6d;
+}
+
+/* Falling icons */
+.fall {
+  position: fixed;
+  top: -10px;
+  animation: fall linear infinite;
+  opacity: 0.9;
+  z-index: 5;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
 }
 </style>
 </head>
@@ -90,16 +96,20 @@ button {
 <div class="section active" id="s1">
   <h2>Merry Christmas<br>to my Wife ❤️</h2>
   <h3>Gowthami</h3>
-  <button onclick="next(2)">Tap me 🎁</button>
+  <button onclick="next(2)">Tap me ❄️</button>
 </div>
 
 <!-- Section 2 -->
 <div class="section" id="s2">
   <div class="card">
     <h3>Just for you 💖</h3>
-    <p>I don’t need any gift this Christmas, because…</p>
-    <p><b>You are my favorite, my miracle, and my forever gift 🎁</b></p>
-    <button onclick="next(3)">Open it ❄️</button>
+    <p>
+      I don’t need any gift this Christmas,<br>
+      because I already have you.<br><br>
+      You are my smile, my calm,<br>
+      and my forever.
+    </p>
+    <button onclick="next(3)">Open it 🎄</button>
   </div>
 </div>
 
@@ -108,12 +118,16 @@ button {
   <div class="card">
     <h3>Merry Christmas ❤️</h3>
     <p>
-      This Christmas, I just want you to know how deeply special you are to me.<br><br>
+      This Christmas, I just want you to know<br>
+      how deeply special you are to me.<br><br>
+
       Gowthami, you are not just my wife,<br>
-      you are my happiness, my peace, and my safest place.<br><br>
+      you are my happiness, my peace,<br>
+      and my safest place.<br><br>
+
       Every smile of mine has your reason,<br>
       every dream of mine has your name.<br><br>
-      Having you in my life is already the greatest blessing.<br><br>
+
       <b>Merry Christmas, my love 🎄✨</b>
     </p>
     <div class="signature">
@@ -124,19 +138,26 @@ button {
 
 <script>
 function next(n){
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById('s'+n).classList.add('active');
+  document.querySelectorAll('.section').forEach(s =>
+    s.classList.remove('active')
+  );
+  document.getElementById('s' + n).classList.add('active');
 }
 
-/* Snow generator */
-for(let i=0;i<40;i++){
-  let snow = document.createElement("div");
-  snow.innerHTML = "❄️";
-  snow.className = "snow";
-  snow.style.left = Math.random()*100 + "vw";
-  snow.style.animationDuration = (3 + Math.random()*5) + "s";
-  snow.style.fontSize = (12 + Math.random()*18) + "px";
-  document.body.appendChild(snow);
+/* Falling Christmas icons */
+const icons = ["❄️","☃️","🌲","🌟","🎄","🔔","🎅🏻"];
+
+for (let i = 0; i < 30; i++) {
+  let icon = document.createElement("div");
+  icon.className = "fall";
+  icon.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+
+  icon.style.left = Math.random() * 100 + "vw";
+  icon.style.fontSize = (18 + Math.random() * 22) + "px";
+  icon.style.animationDuration = (4 + Math.random() * 6) + "s";
+  icon.style.animationDelay = Math.random() * 5 + "s";
+
+  document.body.appendChild(icon);
 }
 
 /* Music toggle */
