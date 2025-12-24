@@ -1,86 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Merry Christmas Gowthami ❤️</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Merry Christmas Gowthami ❤️</title>
 
-<style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(#eaf6ff, #ffffff);
-  text-align: center;
-  overflow-x: hidden;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#eaf6ff, #ffffff);
+      overflow: hidden;
+      text-align: center;
+    }
 
-/* Sections */
-.section {
-  display: none;
-  padding: 40px 20px;
-  min-height: 100vh;
-}
+    /* Sections */
+    .section {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
 
-.section.active {
-  display: block;
-}
+    .section.active {
+      display: flex;
+    }
 
-.card {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  max-width: 380px;
-  margin: auto;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
+    /* Card */
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      max-width: 360px;
+      margin: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      z-index: 10;
+    }
 
-button {
-  padding: 14px 26px;
-  font-size: 16px;
-  border: none;
-  border-radius: 25px;
-  background: #ff4d6d;
-  color: white;
-  cursor: pointer;
-  margin-top: 20px;
-}
+    h2, h3 {
+      margin: 10px 0;
+    }
 
-/* Music button */
-.music-btn {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  background: #ff4d6d;
-  color: white;
-  border-radius: 50%;
-  padding: 12px;
-  font-size: 14px;
-  z-index: 10;
-}
+    button {
+      padding: 14px 26px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      background: #ff4d6d;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+    }
 
-/* Signature */
-.signature {
-  margin-top: 20px;
-  font-style: italic;
-  color: #ff4d6d;
-}
+    .signature {
+      margin-top: 15px;
+      font-style: italic;
+      color: #ff4d6d;
+    }
 
-/* Falling icons */
-.fall {
-  position: fixed;
-  top: -10px;
-  animation: fall linear infinite;
-  opacity: 0.9;
-  z-index: 5;
-  pointer-events: none;
-}
+    /* Music button */
+    .music-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: #ff4d6d;
+      color: white;
+      border-radius: 50%;
+      padding: 12px;
+      font-size: 18px;
+      z-index: 20;
+      cursor: pointer;
+    }
 
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
-  }
-}
-</style>
+    /* Falling icons */
+    .fall {
+      position: fixed;
+      top: -10px;
+      animation: fall linear infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -94,9 +105,11 @@ button {
 
 <!-- Section 1 -->
 <div class="section active" id="s1">
-  <h2>Merry Christmas<br>to my Wife ❤️</h2>
-  <h3>Gowthami</h3>
-  <button onclick="next(2)">Tap me ❄️</button>
+  <div class="card">
+    <h2>Merry Christmas<br>to my Wife ❤️</h2>
+    <h3>Gowthami</h3>
+    <button onclick="next(2)">🎁 Tap me 🎁</button>
+  </div>
 </div>
 
 <!-- Section 2 -->
@@ -104,12 +117,10 @@ button {
   <div class="card">
     <h3>Just for you 💖</h3>
     <p>
-      I don’t need any gift this Christmas,<br>
-      because I already have you.<br><br>
-      You are my smile, my calm,<br>
-      and my forever.
+      This Christmas, I just want you to know<br>
+      how deeply special you are to me.
     </p>
-    <button onclick="next(3)">Open it 🎄</button>
+    <button onclick="next(3)">🎁 Open it 🎁</button>
   </div>
 </div>
 
@@ -118,16 +129,12 @@ button {
   <div class="card">
     <h3>Merry Christmas ❤️</h3>
     <p>
-      This Christmas, I just want you to know<br>
-      how deeply special you are to me.<br><br>
-
+      This Christmas, I just want you to know how deeply special you are to me.<br><br>
       Gowthami, you are not just my wife,<br>
-      you are my happiness, my peace,<br>
-      and my safest place.<br><br>
-
+      you are my happiness, my peace, and my safest place.<br><br>
       Every smile of mine has your reason,<br>
       every dream of mine has your name.<br><br>
-
+      Having you in my life is already the greatest blessing.<br><br>
       <b>Merry Christmas, my love 🎄✨</b>
     </p>
     <div class="signature">
@@ -137,27 +144,24 @@ button {
 </div>
 
 <script>
+/* Section navigation */
 function next(n){
-  document.querySelectorAll('.section').forEach(s =>
-    s.classList.remove('active')
-  );
-  document.getElementById('s' + n).classList.add('active');
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('s'+n).classList.add('active');
 }
 
 /* Falling Christmas icons */
-const icons = ["❄️","☃️","🌲","🌟","🎄","🔔","🎅🏻"];
+const icons = ["❄️","☃️","🌲","🌟","🎄","🔔","🎅🏻","🎁"];
 
-for (let i = 0; i < 30; i++) {
-  let icon = document.createElement("div");
-  icon.className = "fall";
-  icon.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-
-  icon.style.left = Math.random() * 100 + "vw";
-  icon.style.fontSize = (18 + Math.random() * 22) + "px";
-  icon.style.animationDuration = (4 + Math.random() * 6) + "s";
-  icon.style.animationDelay = Math.random() * 5 + "s";
-
-  document.body.appendChild(icon);
+for(let i = 0; i < 45; i++){
+  let el = document.createElement("div");
+  el.className = "fall";
+  el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.animationDuration = (4 + Math.random() * 6) + "s";
+  el.style.fontSize = (18 + Math.random() * 16) + "px";
+  el.style.opacity = Math.random();
+  document.body.appendChild(el);
 }
 
 /* Music toggle */
