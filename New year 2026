@@ -6,86 +6,111 @@
 <title>Happy New Year Gowthami ❤️</title>
 
 <style>
-body {
+html, body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at top, #1a0033, #000);
-  color: white;
+  padding: 0;
+  height: 100%;
   overflow: hidden;
-  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/* Sections */
-.section {
-  display: none;
-  height: 100vh;
-  width: 100vw;
+body {
+  background: radial-gradient(circle at top, #2b003a, #0b0014 70%);
+  display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.section.active {
-  display: flex;
-}
-
-/* Card */
-.card {
-  background: rgba(255,255,255,0.12);
-  padding: 26px;
-  border-radius: 18px;
-  max-width: 380px;
-  box-shadow: 0 0 30px rgba(255,77,109,0.4);
-  backdrop-filter: blur(8px);
-  z-index: 10;
-}
-
-button {
-  padding: 14px 28px;
-  font-size: 16px;
-  border: none;
-  border-radius: 30px;
-  background: #ff4d6d;
   color: white;
-  cursor: pointer;
-  margin-top: 20px;
+}
+
+/* Center Card */
+.card {
+  position: relative;
+  z-index: 5;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px);
+  border-radius: 22px;
+  padding: 30px 26px;
+  max-width: 340px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(255,0,150,0.35);
+  animation: fadeUp 1.8s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.name {
+  font-size: 22px;
+  color: #ff9ad5;
+  margin: 8px 0 14px;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.95;
 }
 
 .signature {
-  margin-top: 16px;
+  margin-top: 18px;
   font-style: italic;
-  color: #ffb3c6;
+  color: #ff7eb9;
 }
 
-/* Music button */
+/* Music Button */
 .music-btn {
   position: fixed;
-  top: 15px;
-  right: 15px;
-  background: #ff4d6d;
+  top: 18px;
+  right: 18px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
-  padding: 12px;
-  font-size: 18px;
-  z-index: 20;
+  background: #ff4f9a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: white;
   cursor: pointer;
+  box-shadow: 0 0 18px rgba(255,80,160,0.8);
+  z-index: 10;
 }
 
-/* Falling animation */
-.fall {
+/* Floating Hearts */
+.heart {
   position: fixed;
-  top: -20px;
-  animation: fall linear infinite;
-  pointer-events: none;
-  z-index: 1;
+  bottom: -10%;
+  font-size: 20px;
+  animation: floatUp linear infinite;
+  opacity: 0.85;
 }
 
-@keyframes fall {
+@keyframes floatUp {
   to {
-    transform: translateY(120vh);
+    transform: translateY(-120vh) scale(1.4);
+    opacity: 0;
   }
+}
+
+/* Fireworks */
+.firework {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: explode 1.8s ease-out forwards;
+}
+
+@keyframes explode {
+  from { transform: scale(0); opacity: 1; }
+  to { transform: scale(18); opacity: 0; }
 }
 </style>
 </head>
@@ -94,85 +119,58 @@ button {
 
 <!-- Music -->
 <audio id="music" loop>
-  <source src="romantic.mp3" type="audio/mpeg">
+  <source src="newyear.mp3" type="audio/mpeg">
 </audio>
 
-<div class="music-btn" onclick="toggleMusic()">🎵</div>
+<div class="music-btn" onclick="toggleMusic()">🎶</div>
 
-<!-- Section 1 -->
-<div class="section active" id="s1">
-  <div class="card">
-    <h2>🎆 Happy New Year ❤️</h2>
-    <h3>Gowthami</h3>
-    <p>Tap to start our new year together ✨</p>
-    <button onclick="next(2)">🎁 Tap me 🎁</button>
-  </div>
-</div>
+<div class="card">
+  <h1>🎆 Happy New Year ❤️</h1>
+  <div class="name">My Love Gowthami 💖</div>
 
-<!-- Section 2 -->
-<div class="section" id="s2">
-  <div class="card">
-    <h3>💖 New Beginnings</h3>
-    <p>
-      A new year, a new chapter…<br>
-      but my favorite part stays the same —<br>
-      <b>you ❤️</b>
-    </p>
-    <button onclick="next(3)">🎆 Open it 🎆</button>
-  </div>
-</div>
+  <p>
+    A new year begins, but my love for you only grows deeper with every heartbeat.<br><br>
+    You are my happiness, my peace, and my forever wish.<br><br>
+    May this year bring us more laughter, more dreams,
+    and endless love together.
+  </p>
 
-<!-- Section 3 -->
-<div class="section" id="s3">
-  <div class="card">
-    <h2>Happy New Year ❤️</h2>
-    <p>
-      Gowthami, as this new year begins,<br>
-      I want you to know one thing clearly…<br><br>
-
-      You are my happiness,<br>
-      my calm in chaos,<br>
-      and my favorite blessing.<br><br>
-
-      I don’t know what the new year holds,<br>
-      but I know I want to walk through it<br>
-      <b>with you ❤️</b><br><br>
-
-      ✨ Cheers to us, to love, and to many memories ahead ✨
-    </p>
-    <div class="signature">
-      — From someone who loves you deeply ❤️
-    </div>
+  <div class="signature">
+    Happy New Year, my heart ✨<br>
+    — From your husband ❤️
   </div>
 </div>
 
 <script>
-/* Navigation */
-function next(n){
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById('s'+n).classList.add('active');
-}
-
-/* Fireworks + hearts + confetti mix */
-const icons = ["🎆","🎇","❤️","💖","✨","🥂"];
-
-for(let i = 0; i < 50; i++){
-  let el = document.createElement("div");
-  el.className = "fall";
-  el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-  el.style.left = Math.random() * 100 + "vw";
-  el.style.fontSize = (18 + Math.random() * 20) + "px";
-  el.style.animationDuration = (4 + Math.random() * 6) + "s";
-  el.style.opacity = Math.random();
-  document.body.appendChild(el);
-}
-
 /* Music toggle */
 function toggleMusic(){
-  let m = document.getElementById("music");
+  const m = document.getElementById("music");
   if(m.paused) m.play();
   else m.pause();
 }
+
+/* Hearts generator */
+const hearts = ["❤️","💖","💕","💞"];
+setInterval(() => {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = hearts[Math.floor(Math.random()*hearts.length)];
+  h.style.left = Math.random()*100 + "vw";
+  h.style.animationDuration = (6 + Math.random()*4) + "s";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 10000);
+}, 500);
+
+/* Fireworks generator */
+setInterval(() => {
+  const f = document.createElement("div");
+  f.className = "firework";
+  f.style.left = Math.random()*100 + "vw";
+  f.style.top = Math.random()*60 + "vh";
+  f.style.background = `hsl(${Math.random()*360},100%,70%)`;
+  document.body.appendChild(f);
+  setTimeout(() => f.remove(), 2000);
+}, 900);
 </script>
 
 </body>
