@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year Gowthami ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #1a0033, #000);
+  color: white;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Sections */
+.section {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.section.active {
+  display: flex;
+}
+
+/* Card */
+.card {
+  background: rgba(255,255,255,0.12);
+  padding: 26px;
+  border-radius: 18px;
+  max-width: 380px;
+  box-shadow: 0 0 30px rgba(255,77,109,0.4);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+button {
+  padding: 14px 28px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  background: #ff4d6d;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.signature {
+  margin-top: 16px;
+  font-style: italic;
+  color: #ffb3c6;
+}
+
+/* Music button */
+.music-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: #ff4d6d;
+  border-radius: 50%;
+  padding: 12px;
+  font-size: 18px;
+  z-index: 20;
+  cursor: pointer;
+}
+
+/* Falling animation */
+.fall {
+  position: fixed;
+  top: -20px;
+  animation: fall linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(120vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio id="music" loop>
+  <source src="romantic.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
+
+<!-- Section 1 -->
+<div class="section active" id="s1">
+  <div class="card">
+    <h2>🎆 Happy New Year ❤️</h2>
+    <h3>Gowthami</h3>
+    <p>Tap to start our new year together ✨</p>
+    <button onclick="next(2)">🎁 Tap me 🎁</button>
+  </div>
+</div>
+
+<!-- Section 2 -->
+<div class="section" id="s2">
+  <div class="card">
+    <h3>💖 New Beginnings</h3>
+    <p>
+      A new year, a new chapter…<br>
+      but my favorite part stays the same —<br>
+      <b>you ❤️</b>
+    </p>
+    <button onclick="next(3)">🎆 Open it 🎆</button>
+  </div>
+</div>
+
+<!-- Section 3 -->
+<div class="section" id="s3">
+  <div class="card">
+    <h2>Happy New Year ❤️</h2>
+    <p>
+      Gowthami, as this new year begins,<br>
+      I want you to know one thing clearly…<br><br>
+
+      You are my happiness,<br>
+      my calm in chaos,<br>
+      and my favorite blessing.<br><br>
+
+      I don’t know what the new year holds,<br>
+      but I know I want to walk through it<br>
+      <b>with you ❤️</b><br><br>
+
+      ✨ Cheers to us, to love, and to many memories ahead ✨
+    </p>
+    <div class="signature">
+      — From someone who loves you deeply ❤️
+    </div>
+  </div>
+</div>
+
+<script>
+/* Navigation */
+function next(n){
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('s'+n).classList.add('active');
+}
+
+/* Fireworks + hearts + confetti mix */
+const icons = ["🎆","🎇","❤️","💖","✨","🥂"];
+
+for(let i = 0; i < 50; i++){
+  let el = document.createElement("div");
+  el.className = "fall";
+  el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.fontSize = (18 + Math.random() * 20) + "px";
+  el.style.animationDuration = (4 + Math.random() * 6) + "s";
+  el.style.opacity = Math.random();
+  document.body.appendChild(el);
+}
+
+/* Music toggle */
+function toggleMusic(){
+  let m = document.getElementById("music");
+  if(m.paused) m.play();
+  else m.pause();
+}
+</script>
+
+</body>
+</html>
